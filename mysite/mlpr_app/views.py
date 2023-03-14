@@ -1,8 +1,9 @@
 from django.shortcuts import render
+from numpy import array
 # from django.http import HttpResponse
 from . models import SearchLog
-from . raw_query import raw_query
-from numpy import array
+# from . raw_query import raw_query
+
 
 # Create your views here.
 
@@ -18,7 +19,7 @@ def about(request):
 
 
 def contact(request):
-    commodities = raw_query("SELECT * FROM `commodities`")
+    commodities = []
     return render(request, 'mlpr_app/contact.html', {"commodities": commodities})
 
 def dis(request):
