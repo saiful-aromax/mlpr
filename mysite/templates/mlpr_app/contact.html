@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %} HOME {% endblock title %}
+{% block content %}
+This is About Page<br>
+{% if commodities %}
+<h2>This is Contact Page</h2>
+<h3>Commodities</h3>
+<table border="1">
+    <thead>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Code</th>
+    </thead>
+    {% with aro_var="Saiful" %}
+    {% for commodity in commodities %}
+    <tr>
+        <td>{{ commodity.0 }}</td>
+        <td>{{ commodity.1 }}</td>
+        <td>{{ commodity.0 }}</td>
+    </tr>
+    {% endfor %}
+    {% endwith %}
+
+</table>
+{% else %}
+<p>No data found!</p>
+{% endif %}
+<br>
+Variable Display complete
+{% endblock content %}

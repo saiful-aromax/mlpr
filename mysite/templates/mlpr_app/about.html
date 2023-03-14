@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %} HOME {% endblock title %}
+{% block content %}
+This is About Page<br>
+{% if GetInfo %}
+<table border="1">
+    <thead>
+        <th>URL</th>
+        <th>ISWP</th>
+        <th>Search Time</th>
+    </thead>
+    {% for Info in GetInfo %}
+    <tr>
+        <td>{{ Info.url }}</td>
+        <td>{{ Info.iswp }}</td>
+        <td>{{ Info.search_time }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% else %}
+<p>No data found!</p>
+{% endif %}
+<br>
+Variable Display complete
+{% endblock content %}
