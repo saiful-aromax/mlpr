@@ -8,8 +8,15 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>{% block title %}{% endblock  %}</title>
-    {% include 'css.html' %}
-    {% include 'js.html' %}
+	<style>
+	{% include 'css/autocomplete.css' %}
+	{% include 'css/base.css' %}
+	{% include 'css/changelists.css' %}
+	{% include 'css/dark_mode.css' %}
+	{% include 'css/dashboard.css' %}
+	</style>
+    
+    
 </head>
 
 <body>
