@@ -4,7 +4,7 @@ from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 # from django.http import HttpResponse
 from . models import SearchLog
-from .evaluation_mc import *
+from .modeling import *
 
 
 debug = ""
