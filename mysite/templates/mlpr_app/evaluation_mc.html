@@ -5,10 +5,19 @@
 
 <div style="text-align: center;">
     <table style="text-align: center;" align="center">
-        <tr>
-            
-        </tr>
-    </table>
+        <thead>
+            <tr>
+            <th>Model</th>
+            <th>Score</th>
+        </thead>
+    </tr>
+    {% for model, score in data.items %}
+                <tr>
+                    <td>{{ model }}</td>
+                    <td>{{ score }}</td>
+                </tr>
+            {% endfor %}
+        </table>
 </div>
 
 {% endblock content %}

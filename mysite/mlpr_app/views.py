@@ -32,15 +32,18 @@ def home(request):
 
 def select_output(request, file_name):
     if request.method == 'POST':
-        return redirect('/modeling/' + file_name + '/' + request.POST['data_output'] + '/' + request.POST['mc'] + '/' + request.POST['split'])
+        # return redirect('/evaluation_mc/' + file_name + '/' + request.POST['data_output'] + '/' + request.POST['mc'] + '/' + request.POST['split'])
+        file_url = settings.MEDIA_ROOT + "\\" + file_name
+        data = model_score_mc(file_url, request.POST['data_output'], int(request.POST['mc']), float(request.POST['split']))
+        return render(request, 'mlpr_app/evaluation_mc.html', {'data': data})
     file_url = settings.MEDIA_ROOT + "\\" + file_name
     columns = get_columns(file_url)
     return render(request, 'mlpr_app/select_output.html', {"columns": columns})
 
 def evaluation_mc(request, file_name, y, mc, split):
     file_url = settings.MEDIA_ROOT + "\\" + file_name
-    # data = data_prep(file_url, y)
-    return render(request, 'mlpr_app/evaluation_mc.html')
+    data = model_score_mc(file_url, y)
+    return render(request, 'mlpr_app/evaluation_mc.html', {"debug": debug})
 
 
 def about(request):
