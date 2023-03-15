@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %} Select Output Data {% endblock title %}
+{% block content %}
+<h2>Model Evaluation Using Monte Carlo Run</h2>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div style="text-align: center;">
+    <table style="text-align: center;" align="center">
+        <tr>
+            <td style="text-align: right;"><label for="data_output">Select Output Column</label></td>
+            <td style="text-align: left;"><select name="data_output" id="data_output" required="required">
+                <option value="">--Select--</option>
+                {% for column in columns %}
+                <option value="{{ column }}">{{ column }}</option>
+            {% endfor %}
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><label for="mc">Select MC Run</label></td>
+            <td style="text-align: left;"><select name="mc" id="mc" required="required">
+                <option value="">--Select--</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+                <option value="150">150</option>
+                <option value="200">200</option>
+                <option value="250">250</option>
+                <option value="300">300</option>
+                <option value="350">350</option>
+                <option value="400">400</option>
+                <option value="450">450</option>
+                <option value="450">500</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;"><label for="split">Select Test Data (%)</label></td>
+            <td style="text-align: left;"><select name="split" id="split" required="required">
+                <option value="">--Select--</option>
+                <option value="0.1">10%</option>
+                <option value="0.2">20%</option>
+                <option value="0.3">30%</option>
+                <option value="0.4">40%</option>
+                <option value="0.5">50%</option>
+                <option value="0.6">60%</option>
+                <option value="0.7">70%</option>
+                <option value="0.8">80%</option>
+                <option value="0.9">90%</option>
+            </select></td>
+        </tr>
+    </table>
+</div>
+<br>
+    <button type="submit">Submit</button>
+</form>
+
+{% endblock content %}

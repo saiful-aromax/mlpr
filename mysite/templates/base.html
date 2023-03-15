@@ -19,7 +19,11 @@
     
 </head>
 
-<body>
+<body style="text-align: center;">
+    {% if debug %}
+    <p>DEBUG: {{ debug }}</p>
+    {% endif %}
+    
     {% include 'header.html' %}
     <br><br>
     <div>

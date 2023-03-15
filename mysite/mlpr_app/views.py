@@ -1,9 +1,13 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from numpy import array
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 # from django.http import HttpResponse
 from . models import SearchLog
+from .evaluation_mc import *
+
+
+debug = ""
 # from . raw_query import raw_query
 
 
@@ -20,10 +24,28 @@ def home(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
-        return render(request, 'mlpr_app/home.html', {
-            'uploaded_file_url': uploaded_file_url
-        })
-    return render(request, 'mlpr_app/home.html')
+        return redirect('/select_output/' + filename)
+        # return render(request, 'mlpr_app/select_input.html', {
+        #     'uploaded_file_url': list(uploaded_file_url)
+        # })
+    return render(request, 'mlpr_app/home.html', {"debug": debug})
+
+def select_output(request, file_name):
+    if request.method == 'POST':
+        return redirect('/modeling/' + file_name + '/' + request.POST['data_output'] + '/' + request.POST['mc'] + '/' + request.POST['split'])
+    file_url = settings.MEDIA_ROOT + "\\" + file_name
+    columns = get_columns(file_url)
+    return render(request, 'mlpr_app/select_output.html', {"columns": columns})
+
+def evaluation_mc(request, file_name, y, mc, split):
+    file_url = settings.MEDIA_ROOT + "\\" + file_name
+    # data = data_prep(file_url, y)
+    return render(request, 'mlpr_app/evaluation_mc.html')
+
+def modeling(request, file_name, y, k, mc):
+    file_url = settings.MEDIA_ROOT + "\\" + file_name
+    data = data_prep(file_url, y)
+    return render(request, 'mlpr_app/modeling.html')
 
 
 def about(request):
