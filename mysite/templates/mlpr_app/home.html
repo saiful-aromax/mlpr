@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block title %} HOME {% endblock title %}
 {% block content %}
-This is HOME PAGE<br>
-{{ AroVar.alpha }}&nbsp;{{ AroVar.bita }}&nbsp;{{ AroVar.gamma }}&nbsp;
-<br>
-Variable Display complete
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="myfile">
+    <button type="submit">Upload</button>
+</form>
+
+{% if uploaded_file_url %}
+<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
+{% endif %}
+
 {% endblock content %}
