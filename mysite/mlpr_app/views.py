@@ -42,11 +42,6 @@ def evaluation_mc(request, file_name, y, mc, split):
     # data = data_prep(file_url, y)
     return render(request, 'mlpr_app/evaluation_mc.html')
 
-def modeling(request, file_name, y, k, mc):
-    file_url = settings.MEDIA_ROOT + "\\" + file_name
-    data = data_prep(file_url, y)
-    return render(request, 'mlpr_app/modeling.html')
-
 
 def about(request):
     GetInfo = SearchLog.objects.all()
