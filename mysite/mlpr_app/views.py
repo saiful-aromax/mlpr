@@ -24,8 +24,11 @@ def home(request):
         fs = FileSystemStorage()
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
+        te = get_columns(uploaded_file_url)
+        file_url = settings.MEDIA_ROOT + "\\" + uploaded_file_url
+        
         # return redirect('/select_output/' + filename)
         return render(request, 'mlpr_app/prediction.html', {
-            'uploaded_file_url': list(uploaded_file_url)
+            'debug': te
         })
     return render(request, 'mlpr_app/home.html', {"debug": debug})

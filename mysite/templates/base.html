@@ -19,13 +19,12 @@
     
 </head>
 
-<body style="text-align: center;">
+<body style="text-align: center; font-family: Arial !important;">
     {% if debug %}
     <p>DEBUG: {{ debug }}</p>
     {% endif %}
     
     {% include 'header.html' %}
-    <br><br>
     <div>
         {% block content %}{% endblock content %}
     </div>

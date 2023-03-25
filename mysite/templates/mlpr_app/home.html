@@ -1,13 +1,97 @@
 {% extends 'base.html' %}
 {% block title %} HOME {% endblock title %}
 {% block content %}
-<h2>Select csv file for Prediction</h2>
+<h2 style="color: rgb(19, 88, 153);">Select csv file for Prediction</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="myfile" required="required">
-    <br>
+    <br><br>
     <hr>
-    <br><br><button type="submit">Upload</button>
+    <h2 style="color: rgb(19, 111, 153);">Insert New Data/Row for Prediction</h2>
+    <table align="center">
+        <tr>
+            <td style="text-align: right;">Age:</td>
+            <td><input name="Age" id="Age" required="required" type="number"; size="10";></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Sex:</td>
+            <td><select name="Sex" id="Sex" required="required">
+                <option value="">--Select--</option>
+                <option value="M">M</option>
+                <option value="F">F</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Chest Pain Type:</td>
+            <td><select name="ChestPainType" id="ChestPainType" required="required">
+                <option value="">--Select--</option>
+                <option value="ASY">ASY</option>
+                <option value="ATA">ATA</option>
+                <option value="NAP">NAP</option>
+                <option value="TA">TA</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Resting BP:</td>
+            <td><input name="RestingBP" id="RestingBP" required="required" type="number"; size="10";></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Cholesterol:</td>
+            <td><input name="Cholesterol" id="Cholesterol" required="required" type="number"; size="10";></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Fasting BS:</td>
+            <td><select name="FastingBS" id="FastingBS" required="required">
+                <option value="">--Select--</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Resting ECG:</td>
+            <td><select name="RestingECG" id="RestingECG" required="required">
+                <option value="">--Select--</option>
+                <option value="TA">TA</option>
+                <option value="LVH">LVH</option>
+                <option value="Normal">Normal</option>
+                <option value="ST">ST</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Max HR:</td>
+            <td><input name="MaxHR" id="MaxHR" required="required" type="number"; size="10";></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Fasting BS:</td>
+            <td><select name="FastingBS" id="FastingBS" required="required">
+                <option value="">--Select--</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Exercise Angina:</td>
+            <td><select name="ExerciseAngina" id="ExerciseAngina" required="required">
+                <option value="">--Select--</option>
+                <option value="Y">Y</option>
+                <option value="N">N</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">Oldpeak:</td>
+            <td><input name="Oldpeak" id="Oldpeak" required="required" type="number"; size="10";></td>
+        </tr>
+        <tr>
+            <td style="text-align: right;">ST_Slope:</td>
+            <td><select name="ST_Slope" id="ST_Slope" required="required">
+                <option value="">--Select--</option>
+                <option value="Up">Up</option>
+                <option value="Down">Down</option>
+                <option value="Flat">Flat</option>
+            </select></td>
+        </tr>
+    </table>
+    <br><br><button type="submit" style="color: hsla(308, 78%, 39%, 0.877); font-size: 16; font-weight: bold;">Predict</button>
 </form>
 
 {% if uploaded_file_url %}
