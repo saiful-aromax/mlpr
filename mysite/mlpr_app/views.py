@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from numpy import array
+
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
 # from django.http import HttpResponse
@@ -20,15 +20,16 @@ debug = ""
 
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
-        myfile = request.FILES['myfile']
-        fs = FileSystemStorage()
-        filename = fs.save(myfile.name, myfile)
-        uploaded_file_url = fs.url(filename)
-        te = get_columns(uploaded_file_url)
-        file_url = settings.MEDIA_ROOT + "\\" + uploaded_file_url
+        # myfile = request.FILES['myfile']
+        # fs = FileSystemStorage()
+        # filename = fs.save(myfile.name, myfile)
+        # uploaded_file_url = fs.url(filename)
+        filename = 'heart.csv'
+        file_url = settings.MEDIA_ROOT + "\\" + filename
         
-        # return redirect('/select_output/' + filename)
+        prediction = get_prediction(file_url)
+        
         return render(request, 'mlpr_app/prediction.html', {
-            'debug': te
+            'prediction': prediction
         })
     return render(request, 'mlpr_app/home.html', {"debug": debug})
