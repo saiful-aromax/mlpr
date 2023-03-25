@@ -1,11 +1,13 @@
 {% extends 'base.html' %}
 {% block title %} HOME {% endblock title %}
 {% block content %}
-<h2>Model Evaluation Using Monte Carlo Run</h2>
+<h2>Select csv file for Prediction</h2>
 <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    <input type="file" name="myfile">
-    <button type="submit">Upload</button>
+    <input type="file" name="myfile" required="required">
+    <br>
+    <hr>
+    <br><br><button type="submit">Upload</button>
 </form>
 
 {% if uploaded_file_url %}
