@@ -62,14 +62,6 @@
             <td><input name="MaxHR" id="MaxHR" required="required" type="number"; size="10";></td>
         </tr>
         <tr>
-            <td style="text-align: right;">Fasting BS:</td>
-            <td><select name="FastingBS" id="FastingBS" required="required">
-                <option value="">--Select--</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-            </select></td>
-        </tr>
-        <tr>
             <td style="text-align: right;">Exercise Angina:</td>
             <td><select name="ExerciseAngina" id="ExerciseAngina" required="required">
                 <option value="">--Select--</option>
@@ -79,7 +71,7 @@
         </tr>
         <tr>
             <td style="text-align: right;">Oldpeak:</td>
-            <td><input name="Oldpeak" id="Oldpeak" required="required" type="number"; size="10";></td>
+            <td><input name="Oldpeak" id="Oldpeak" required="required" type="text"; size="10";></td>
         </tr>
         <tr>
             <td style="text-align: right;">ST_Slope:</td>
@@ -93,9 +85,4 @@
     </table>
     <br><br><button type="submit" style="color: hsla(308, 78%, 39%, 0.877); font-size: 16; font-weight: bold;">Predict</button>
 </form>
-
-{% if uploaded_file_url %}
-<p>File uploaded at: <a href="{{ uploaded_file_url }}">{{ uploaded_file_url }}</a></p>
-{% endif %}
-
 {% endblock content %}

@@ -28,8 +28,9 @@ def home(request):
         file_url = settings.MEDIA_ROOT + "\\" + filename
         
         prediction = get_prediction(file_url, request.POST)
-        
+        input_data = {}
+        input_data.update(request.POST)
         return render(request, 'mlpr_app/prediction.html', {
-            'prediction': prediction
+            'prediction': prediction, 'input_parameter': input_data
         })
     return render(request, 'mlpr_app/home.html', {"debug": debug})
