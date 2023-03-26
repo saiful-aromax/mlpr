@@ -8,7 +8,13 @@
         <thead>
             <tr>
             <th>Prediction</th>
-            <th>{{ prediction }}</th>
+            <th>
+                {% if prediction == 0 %}
+                <div style="color: darkgreen;">No Heart Disease</div>
+                {% else %}
+                <div style="color: crimson;">Heart Disease!</div>
+                {% endif %}
+            </th>
         </thead>
     </tr>
         </table>

@@ -20,14 +20,14 @@ debug = ""
 
 def home(request):
     if request.method == 'POST' and request.FILES['myfile']:
-        # myfile = request.FILES['myfile']
-        # fs = FileSystemStorage()
-        # filename = fs.save(myfile.name, myfile)
-        # uploaded_file_url = fs.url(filename)
-        filename = 'heart.csv'
+        myfile = request.FILES['myfile']
+        fs = FileSystemStorage()
+        filename = fs.save(myfile.name, myfile)
+        uploaded_file_url = fs.url(filename)
+        # filename = 'heart.csv'
         file_url = settings.MEDIA_ROOT + "\\" + filename
         
-        prediction = get_prediction(file_url)
+        prediction = get_prediction(file_url, request.POST)
         
         return render(request, 'mlpr_app/prediction.html', {
             'prediction': prediction
