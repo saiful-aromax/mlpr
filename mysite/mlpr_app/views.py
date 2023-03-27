@@ -25,7 +25,7 @@ def home(request):
         filename = fs.save(myfile.name, myfile)
         uploaded_file_url = fs.url(filename)
         # filename = 'heart.csv'
-        file_url = settings.MEDIA_ROOT + "\\" + filename
+        file_url = settings.MEDIA_ROOT + "/" + filename
         
         prediction = get_prediction(file_url, request.POST)
         input_data = {}
