@@ -2,9 +2,10 @@ from django.db import connection
 
 from pandas import read_csv, DataFrame, concat
 from sklearn.preprocessing import OneHotEncoder, MinMaxScaler
-from sklearn.linear_model import LogisticRegression
 from sklearn.ensemble import BaggingClassifier
 from imblearn.over_sampling import RandomOverSampler
+# from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
 
 #*****************Read Data*****************
 
@@ -17,9 +18,10 @@ def get_prediction(file_url, input_data):
     X_over, y_over = oversample.fit_resample(X, y)
     
     X_over = data_prep(X_over)
-    
-    model = BaggingClassifier(estimator=LogisticRegression(max_iter=10000), n_estimators=50, max_samples=0.8, max_features=0.8)
-    # model = LogisticRegression(max_iter=10000)
+
+    # model = LogisticRegression(max_iter=10000)    
+    # model = BaggingClassifier(estimator=LogisticRegression(max_iter=10000), n_estimators=50, max_samples=0.8, max_features=0.8)
+    model = BaggingClassifier(estimator=SVC(kernel='poly'), n_estimators=50, max_samples=0.8, max_features=0.8)
     model.fit(X_over, y_over)
     input = prepare_input_data(input_data)
     # input = X_over.tail(1)
